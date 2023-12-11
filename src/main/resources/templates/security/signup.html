@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{/layout/index :: dynamic(~{::main})}">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+		<div class="page-path">
+			<div class="container">
+			  <div class="breadcrumbs-inner">
+				<h1 class="path-title">Đăng ký</h1>
+				<ul>
+				  <li>
+					<a class="home-page-link" href="">Trang chủ <i class="fal fa-angle-right"></i></a>
+				  </li>
+				  <li>
+					<a class="current-page" href="#">Đăng ký</a>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+		</div>
+		<div class="login-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 ml-10">
+						<div class="register-form">
+							<div class="section-title">
+								<h2>Đăng ký</h2>
+							</div>
+							<div class="card col-md-8 m-auto">
+								<div class="card-body">
+									<form id="myForm" th:object="${Account}" method="post" action="/security/signup/form/create" >
+										<div class="form">
+											<input style="height: 50px;" th:field="*{username}" class="form-control" id="tnd_username" placeholder="Tên Tài Khoản" required/>
+										</div>
+										<div class="form">
+											<input style="height: 50px;" th:field="*{email}" class="form-control" id="tnd_email" placeholder="Email" required/>
+										</div>
+										<div class="form">
+											<input style="height: 50px;" th:field="*{fullname}" class="form-control" id="tnd_fullname" placeholder="Tên đầy đủ" required/>
+										</div>
+										<div class="form">
+											<div class="password-input">
+												<input type="password" style="height: 50px;" th:field="*{password}" class="form-control" id="tnd_password" placeholder="Mật khẩu" required/>
+											</div>
+										</div>
+										<div class="form">
+											<button id="submitButton" class="btn">Đăng ký</button>
+											<button class="btn ml-3 " onclick="hienthi1()" formaction="/security/signup/form">Xóa hết</button>
+											<a href="/product/list" class="btn ml-3 pt-3">Trang chủ</a>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+		  <script>
+			function hienthi1() {
+				alert("Xóa hết thành công !!");
+			}
+			document.getElementById('submitButton').onclick = function () {
+				var form = document.getElementById('myForm');
+				
+				// Kiểm tra xem có lỗi "required" không
+				var hasRequiredError = false;
+				var requiredFields = form.querySelectorAll('[required]');
+				requiredFields.forEach(function (field) {
+					if (!field.value.trim()) {
+						hasRequiredError = true;
+					}
+				});
+
+				// Nếu không có lỗi "required", thực hiện sự kiện onclick
+				if (!hasRequiredError) {
+					// Thực hiện các thao tác mong muốn
+					alert('Đăng ký thành công');
+				}
+			};
+		</script>
+	</main>
+</body>
+
+</html>
+	

@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+	<div class="panel-heading mt-3 mb-3"><h4>PHÂN CẤP QUYỀN</h4></div>
+	<table class="table table-border">
+		<thead class="table">
+			<tr>
+
+				<th>Tên Tài Khoản</th>
+				<th>Họ tên</th>
+				<th class="text-center">Khách hàng</th>
+				<th class="text-center">Quản trị viên</th>
+				<th class="text-center">Nhân viên</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="acc in admins">
+				<td>{{acc.username}}</td>
+				<td>{{acc.fullname}}</td>
+				<td ng-repeat="role in roles" class="text-center">
+				<input ng-checked="authority_of(acc, role)" ng-click="authority_changed(acc, role)" class="form-check-input" type="checkbox"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

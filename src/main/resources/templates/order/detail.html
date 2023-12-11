@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index :: dynamic(~{::main})}">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+	<main th:object="${order}">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 m-auto">
+					<div class="panel card panel-primary">
+						<div class="panel-heading">
+							<h5 class="card-header">Thông tin đơn hàng</h5>
+							<div class="panel-body">
+								<div class="row p-3">
+									<div class="col-7">
+										<div class="row">
+											<div class="form-group col-sm-7 d-flex">
+												<div>Mã đơn hàng: &nbsp;</div>
+												<span th:text="*{id}">
+											</div>
+											<div class="form-group col-sm-8 d-flex">
+												<div>Người mua hàng: &nbsp;</div>
+												<span th:text="*{account.username}">
+											</div>
+											<div class="form-group col-sm-7 d-flex">
+												<div>Ngày mua: &nbsp;</div>
+												<span>{{order.createDate | date : 'dd-MM-yyyy'}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-5">
+										<div class="row">
+											<div class="form-group col-sm-12">
+												<div>Địa chỉ khách hàng:</div>
+												<span class="form-control" style="height: 70px;"><b th:text="*{address}"></b></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-primary">
+							<h6 class="ms-3">Chi tiết sản phẩm</h6>
+							<table class="table mt-2">
+								<thead>
+									<tr>
+										<th>Mã sản phẩm</th>
+										<th>Tên sản phẩm</th>
+										<th>Giá sản phẩm</th>
+										<th>Số lượng</th>
+										<th>Thành tiền</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="detail: *{orderDetails}" th:object="${detail}">
+										<td class="text-center">[[*{product.id}]]</td>
+										<td>[[*{product.name}]]</td>
+										<td class="text-center">[[*{product.price}]] vnđ</td>
+										<td class="text-center">[[*{quantity}]]</td>
+										<td class="subtotal">[[*{#numbers.formatDecimal(price*quantity, 0,0, 'POINT')}]] vnđ</td>
+									</tr>
+									<tr>
+									<td colspan="4" class="text-center">Tổng tiền:</td>
+									<td colspan="2" id="totalAmount"></td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+				document.addEventListener('DOMContentLoaded', function () {
+				// Tính tổng và hiển thị
+				var subtotals = document.querySelectorAll('.subtotal');
+				var totalAmount = 0;
+
+				subtotals.forEach(function (subtotal) {
+					totalAmount += parseFloat(subtotal.textContent.replace(',', ''));
+				});
+
+				document.getElementById('totalAmount').textContent = totalAmount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ".000.000";
+				});
+		</script>
+	</main>
+
+</body>
+</html>

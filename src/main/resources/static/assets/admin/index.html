@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Trang Quản lý</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+	<script src="https://kit.fontawesome.com/f737751420.js"></script>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!--================= Bootstrap V5 CSS =================-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!--================= Bootstrap V5 CSS =================-->
+
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/images/fav.png">
+	<!--================= Bootstrap V5 CSS =================-->
+	<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+	<!--================= Font Awesome 5 CSS =================-->
+	<link rel="stylesheet" type="text/css" href="/assets/css/all.min.css">
+	<!--================= RT Icons CSS =================-->
+	<link rel="stylesheet" type="text/css" href="/assets/css/rt-icons.css">
+	<!--================= Animate css =================-->
+	<link rel="stylesheet" type="text/css" href="/assets/css/animate.min.css">
+	<!--================= Magnific popup Plugin =================-->
+	<link rel="stylesheet" type="text/css" href="/assets/css/magnific-popup.css">
+	<!--================= Swiper Slider Plugin =================-->
+	<link rel="stylesheet" type="text/css" href="/assets/css/swiper-bundle.min.css">
+	<!--================= Mobile Menu CSS =================-->
+	<link rel="stylesheet" type="text/css" href="/assets/css/metisMenu.css">
+	<!--================= Preloader CSS =================-->
+	<link rel="stylesheet" type="text/css" href="/assets/css/preloader.css">
+	<!--================= Main Stylesheet =================-->
+	<link rel="stylesheet" type="text/css" href="/assets/css/variables/variable4.css">
+	<!--================= Main Stylesheet =================-->
+	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+</head>
+
+<body ng-app="admin-app">
+	<header class="border-bottom">
+		<div class="navbar-sticky">
+			<div class="container">
+				<div class="navbar-part navbar-part1">
+					<div class="navbar-inner">
+						<div class="left-side">
+							<div class="hamburger-1">
+								<a href="#" class="nav-menu-link">
+									<span class="dot1"></span>
+									<span class="dot2"></span>
+									<span class="dot3"></span>
+									<span class="dot4"></span>
+									<span class="dot5"></span>
+									<span class="dot6"></span>
+									<span class="dot7"></span>
+									<span class="dot8"></span>
+									<span class="dot9"></span>
+								</a>
+							</div>
+							<a href="/product/list" class="logo">
+								<img src="/assets/images/logo2.png" height="60" alt="umart-logo">
+							</a>
+						</div>
+						<div class="rts-menu">
+							<nav class="menus menu-toggle">
+								<ul class="nav__menu">
+									<li class="has-dropdown">
+										<a class="menu-item text-decoration-none" aria-current="page"
+											href="/product/list">Trang chủ</a>
+									</li>
+									<li class="has-dropdown">
+										<a class="menu-item text-decoration-none" aria-current="page"
+											href="#!product">Quản lý sản phẩm</a>
+									</li>
+									<li class="has-dropdown">
+										<a class="menu-item text-decoration-none" href="#!authorize">Phân cấp quyền</a>
+									</li>
+									<li class="has-dropdown">
+										<a class="menu-item text-decoration-none" href="#!thongke">Báo cáo thống kê</a>
+									</li>
+									<li class="has-dropdown">
+										<a class="menu-item text-decoration-none" href="/security/logoff">Đăng xuất</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="container">
+			<div class="ng-view"></div>
+		</div>
+	</main>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<!--================= Wow.js =================-->
+	<script src="/assets/js/vendors/wow.min.js"></script>
+	<!--================= Swiper Slider =================-->
+	<script src="/assets/js/vendors/swiper-bundle.min.js"></script>
+	<!--================= Nice Select =================-->
+	<script src="/assets/js/vendors/jquery.nice-select.js"></script>
+	<!--================= metisMenu Plugin =================-->
+	<script src="/assets/js/vendors/metisMenu.min.js"></script>
+	<!--================= Main Menu Plugin =================-->
+	<script src="/assets/js/vendors/rtsmenu.js"></script>
+	<!--================= Magnefic Popup Plugin =================-->
+	<script src="/assets/js/vendors/isotope.pkgd.min.js"></script>
+	<!--================= Magnefic Popup Plugin =================-->
+	<script src="/assets/js/vendors/jquery.magnific-popup.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="/assets/admin/admin-app.js"></script>
+	<script src="/assets/admin/product/product-ctrl.js"></script>
+	<script src="/assets/admin/authority/authority-ctrl.js"></script>
+	<script src="/assets/admin/thongke/thongke-ctrl.js"></script>
+</body>
+
+</html>

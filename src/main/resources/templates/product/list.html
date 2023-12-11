@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<head>
+	<meta charset="utf-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<main >
+		<hr class="m-auto">
+
+		<div  th:replace="/product/_cart-info.html"></div>
+
+		<div  th:replace="/product/_product-prominent.html"></div>
+
+		<div  th:replace="/product/_list-product.html"></div>
+
+		<div  th:replace="/product/_info-shop.html"></div>
+		
+	</main>
+
+</body>
+
+</html>
