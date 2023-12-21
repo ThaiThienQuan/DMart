@@ -40,4 +40,5 @@ public class AuthorityServiceImplement implements AuthorityService{
 		List<Account> accounts = acDao.getAdministrators();
 		return dao.authoritiesOf(accounts);
 	}
+
 }

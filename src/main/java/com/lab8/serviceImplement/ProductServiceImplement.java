@@ -44,9 +44,4 @@ public class ProductServiceImplement implements ProductService{
 	public void delete(Integer id) {
 	 productdao.deleteById(id);
 	}
-
-	@Override
-	public List<Product> findmau(String timmau) {
-		return productdao.findmau(timmau);
-	}
 }

@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/admin/**").hasAnyRole("STAF", "DIRE")
 				.antMatchers("/rest/authorities").hasRole("DIRE")
 				.anyRequest().permitAll();
-
+		/* http.antMatcher("/security/signup/form"); */
 		http.formLogin()
 				.loginPage("/security/login/form")
 				.loginProcessingUrl("/security/login")
@@ -66,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.logout()
 				.logoutUrl("/security/logoff")
 				.logoutSuccessUrl("/security/logoff/success");
-
+//đăng nhập bằng google
 		http.oauth2Login()
 				.defaultSuccessUrl("/security/login/success", false)
 				.failureUrl("/security/login/error")

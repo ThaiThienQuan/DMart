@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.lab8.entity.Account;
+import com.lab8.entity.Product;
 
 public interface AccountService {
 
@@ -20,4 +21,8 @@ public interface AccountService {
 	public boolean authenticate(String username, String password);
 
 	public void changePassword(String username, String newPassword);
+
+	public Account update(Account account);
+
+	public void delete(String username);
 }

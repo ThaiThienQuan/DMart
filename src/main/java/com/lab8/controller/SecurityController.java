@@ -4,14 +4,22 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.lab8.entity.Account;
 import com.lab8.repository.AccountRepository;
 import com.lab8.service.AccountService;
@@ -34,21 +42,26 @@ public class SecurityController {
 		return "security/login";
 	}
 
-	@RequestMapping("/security/signup/form")
-	public String signupForm(Model model) {
-		Account Account = new Account();
+	@GetMapping("/security/signup/form")
+	public String signupForm(Account Account, Model model) {
 		model.addAttribute("Account", Account);
-		List<Account> Accounts = dao.findAll();
-		model.addAttribute("Accounts", Accounts);
-		model.addAttribute("message", "Vui lòng đăng nhập");
 		return "security/signup";
 	}
 
-	@RequestMapping("/security/signup/form/create")
-	public String create(Model model, Account Account) {
-		emailService.sendEmail(Account.getEmail(), "Chào mừng",
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+	}
+
+	private static final Logger Log = LoggerFactory.getLogger(SecurityController.class);
+
+	@PostMapping("/security/signup/form")
+	public String create(@Valid Account account, Model model) {
+		emailService.sendEmail(account.getEmail(), "Chào mừng",
 				"Rất vui vì bạn đã đăng ký tài khoản tại website chúng tôi Link website chúng tôi: http://localhost:8080/security/login/form");
-		dao.save(Account);
+		dao.save(account);
+		Log.info(">> Chi tiết tài khoản: {}", account);
 		return "redirect:/security/login/form";
 	}
 
@@ -101,11 +114,11 @@ public class SecurityController {
 			sendNewPasswordByEmail(email, newPassword);
 			model.addAttribute("message", "Mật khẩu đã được gửi đến địa chỉ email của bạn.");
 			// Chuyển hướng đến trang thông báo gửi mật khẩu thành công
-			return null;
+			return "redirect:/security/forgot-password/success";
 		} else {
 			// Chuyển hướng đến trang thông báo email không tồn tại
 			model.addAttribute("message", "Email không tồn tại trong hệ thống.");
-			return null;
+			return "redirect:/security/forgot-password/email-not-found";
 		}
 	}
 

@@ -1,0 +1,55 @@
+<div class="panel panel-default ">
+	<div class="panel-body m-auto">
+		<div class="row mt-5">
+			<div class="col-sm-4 text-center">
+				<label class="border p-2" for="photo">
+					<img ng-src="{{'/assets/images/' + form.photo}}" style="max-width: 100%; height: 200px">
+				</label>
+				<h6 class="mt-2">Ảnh sản phẩm</h6>
+			</div>
+			<div class="col-sm-8">
+				<div class="row">
+					<div class=" col-sm-6">
+						<div class="mb-2">Tên tài khoản</div>
+						<input ng-model="form.username" placeholder="Tên tài khoản?" class="form-control">
+					</div>
+					<div class=" col-sm-6">
+						<div class="mb-2">Mật khẩu</div>
+						<input type="text" ng-model="form.password" placeholder="Mật khẩu?" class="form-control">
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class=" col-sm-6">
+						<div class="mb-2">Họ và tên</div>
+						<input ng-model="form.fullname" placeholder="Họ và tên?" class="form-control">
+					</div>
+					<div class=" col-sm-6">
+						<div class="mb-2">Email</div>
+						<input ng-model="form.email" placeholder="Email?" class="form-control">
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class=" col-sm-6">
+						<div class="mb-2">Hình ảnh</div>
+						<input type="file" class="form-control" id="photo"
+							onchange="angular.element(this).scope().imageChanged(this.files)">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="d-flex gap-3 ms-5 mt-3">
+		<button ng-click="create()" class="btn btn-primary">
+			<b class="glyphicon glyphicon-plus"></b>Create
+		</button>
+		<button ng-click="update()" class="btn btn-success">
+			Update
+		</button>
+		<button ng-click="delete(form)" class="btn btn-danger">
+			Delete
+		</button>
+		<button ng-click="reset()" class="btn btn-info">
+			Reset
+		</button>
+	</div>
+</div>

@@ -43,18 +43,6 @@ public class ProductController {
 		return "product/list";
 	}
 
-	@RequestMapping("/product/list1")
-	public String listmau(Model model, @RequestParam("timmau") Optional<String> timmau) {
-		if (timmau.isPresent()) {
-			List<Product> list = ProductService.findByCategoryId(timmau.get());
-			model.addAttribute("items", list);
-		} else {
-			List<Product> list = ProductService.findAll(); // Lấy sản phẩm từ database
-			model.addAttribute("items", list); // đưa vào trong model
-		}
-
-		return "product/list";
-	}
 
 	@RequestMapping("/product/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Integer id) {

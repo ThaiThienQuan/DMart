@@ -27,6 +27,18 @@ public class AccountServiceImplement implements AccountService {
 	}
 
 	@Override
+	public Account update(Account Account) {
+		// TODO Auto-generated method stub
+		return accountDAO.save(Account);
+	}
+
+	@Override
+	public void delete(String username) {
+		accountDAO.deleteById(username);
+
+	}
+
+	@Override
 	public List<Account> getAdministrators() {
 		return accountDAO.getAdministrators();
 	}
@@ -71,4 +83,5 @@ public class AccountServiceImplement implements AccountService {
 			e.printStackTrace();
 		}
 	}
+
 }

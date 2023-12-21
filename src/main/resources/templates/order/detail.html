@@ -30,6 +30,10 @@
 												<div>Ngày mua: &nbsp;</div>
 												<span>{{order.createDate | date : 'dd-MM-yyyy'}}</span>
 											</div>
+											<div class="form-group col-sm-7 d-flex">
+												<div>Số điện thoại: &nbsp;</div>
+												<span  th:text="*{phone}"></span>
+											</div>
 										</div>
 									</div>
 									<div class="col-5">
@@ -58,11 +62,11 @@
 								</thead>
 								<tbody>
 									<tr th:each="detail: *{orderDetails}" th:object="${detail}">
-										<td class="text-center">[[*{product.id}]]</td>
+										<td class="text-center" id="productid">[[*{product.id}]]</td>
 										<td>[[*{product.name}]]</td>
 										<td class="text-center">[[*{product.price}]] vnđ</td>
 										<td class="text-center">[[*{quantity}]]</td>
-										<td class="subtotal">[[*{#numbers.formatDecimal(price*quantity, 0,0, 'POINT')}]] vnđ</td>
+										<td class="subtotal">[[*{#numbers.formatDecimal(price*quantity,0,0,'POINT')}]] vnđ</td>
 									</tr>
 									<tr>
 									<td colspan="4" class="text-center">Tổng tiền:</td>
@@ -80,12 +84,11 @@
 				// Tính tổng và hiển thị
 				var subtotals = document.querySelectorAll('.subtotal');
 				var totalAmount = 0;
-
 				subtotals.forEach(function (subtotal) {
 					totalAmount += parseFloat(subtotal.textContent.replace(',', ''));
 				});
 
-				document.getElementById('totalAmount').textContent = totalAmount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ".000.000";
+				document.getElementById('totalAmount').textContent = totalAmount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')+ ' vnd' ;
 				});
 		</script>
 	</main>

@@ -8,7 +8,6 @@ public interface ProductService {
 
 	List<Product> findAll();
 
-	List<Product> findmau(String timmau);
 
 	Product findById(Integer id);
 

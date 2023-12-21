@@ -19,7 +19,7 @@ import com.lab8.service.RoleService;
 public class RoleRestController {
 	@Autowired
 	RoleService roleService;
-	
+// lấy dữ liệu roles
 	@GetMapping("/rest/roles")
 	public List<Role> getAll(){
 		return roleService.getAll();

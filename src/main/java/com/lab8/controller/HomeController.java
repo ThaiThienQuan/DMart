@@ -2,6 +2,8 @@ package com.lab8.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,8 +29,9 @@ public class HomeController {
 	}
 
 	@RequestMapping("/capnhatuser")
-	public String capnhatuser(Model model) {
+	public String capnhatuser(Model model,HttpServletRequest request) {
 		Account Account = new Account();
+		String username = request.getRemoteUser();
 		model.addAttribute("Account", Account);
 		List<Account> Accounts = dao.findAll();
 		model.addAttribute("Accounts", Accounts);
@@ -36,7 +39,9 @@ public class HomeController {
 	}
 
 	@RequestMapping("/capnhatuser/update")
-	public String update(Model model, Account Account) {
+	public String update(Model model, Account Account,HttpServletRequest request) {
+		String username = request.getRemoteUser();
+		Account.setUsername(username);
 		dao.save(Account);
 		model.addAttribute("message", "Cập nhật thành công");
 		return "redirect:/capnhatuser/edit/" + Account.getUsername();

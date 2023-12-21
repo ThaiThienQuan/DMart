@@ -10,7 +10,7 @@ app.controller("authority-ctrl", function($scope, $http, $location){
 		})
 		
 		//load staffs and directors (administations)
-		$http.get("/rest/accounts").then(resp =>{
+		$http.get("/rest/accounts2").then(resp =>{
 			$scope.admins = resp.data;
 		})
 		
@@ -21,7 +21,7 @@ app.controller("authority-ctrl", function($scope, $http, $location){
 			$location.path("/unauthorizied");
 		})
 	}
-	
+	//so sánh dữ liệu usename của account và id của role 
 	$scope.authority_of = function(acc, role){
 		if($scope.authorities){
 			return $scope.authorities.find(ur => ur.account.username == acc.username && ur.role.id == role.id);

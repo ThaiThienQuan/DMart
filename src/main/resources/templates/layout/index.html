@@ -41,12 +41,12 @@
 </head>
 
 <body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
-    <header id="rtsHeader">
+    <header id="rtsHeader" class="mb-5">
         <div th:replace="/layout/_navMenu.html"></div>
-    </header>
+    </header> <br>
 
-    <div class="col-md-12 mb-5">
-        <div th:replace="${main}" class=" m-auto"></div>
+    <div class="col-md-12 mb-5 mt-5">
+        <div th:replace="${main}" class="m-auto"></div>
     </div>
 
     <br> <br>

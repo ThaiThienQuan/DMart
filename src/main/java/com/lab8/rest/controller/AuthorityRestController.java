@@ -9,11 +9,15 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lab8.entity.Account;
 import com.lab8.entity.Authority;
+import com.lab8.entity.Product;
+import com.lab8.service.AccountService;
 import com.lab8.service.AuthorityService;
 
 @CrossOrigin("*")
@@ -22,7 +26,17 @@ import com.lab8.service.AuthorityService;
 public class AuthorityRestController {
 	@Autowired
 	AuthorityService authorityService;
-	
+	@Autowired
+	AccountService accountService;
+//lấy dữ liệu Accounts
+	@GetMapping("/rest/accounts2")
+	public List<Account> getAccounts(@RequestParam("admin") Optional<Boolean> admin) {
+		if (admin.orElse(false)) {
+			return accountService.getAdministrators();
+		}
+		return accountService.findAll();
+	}
+	//lấy dữ liệu Authority
 	@GetMapping("/rest/authorities")
 	public List<Authority> findAll(@RequestParam("admin") Optional<Boolean> admin){
 		if(admin.orElse(false)) {

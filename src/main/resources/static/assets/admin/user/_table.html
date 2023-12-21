@@ -19,27 +19,23 @@
 	<table class="table table-condensed">
 		<thead class="bg-succes" >
 			<tr>
-				<th>Mã sản phẩm</th>
-				<th>Tên sản phẩm</th>
-				<th>Giá sản phẩm</th>
-				<th>Ngày sản xuất</th>
+				<th>Tên tài khoản</th>
+				<th>Mật khẩu</th>
+				<th>Họ và tên</th>
+				<th>Email</th>
 				<th>Hình sản phẩm</th>
-				<th>loại sản phẩm</th>
-				<th>Có mở bán?</th>
 				<th>Thao tác</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="item in pager.items" class="align-middle">
-				<td>{{item.id}}</td>
-				<td>{{item.name}}</td>
-				<td>{{item.price | number : 0}} vnđ</td>
-				<td>{{item.createDate | date : 'dd-MM-yyyy'}}</td>
+				<td>{{item.username}}</td>
+				<td>{{item.password}}</td>
+				<td>{{item.fullname}}</td>
+				<td>{{item.email}}</td>
 				<td>
-					<img ng-src="{{'/assets/images/' + item.image}}" width="50" class="img-thumbnail">
+					<img ng-src="{{'/assets/images/' + item.photo}}" width="50" class="img-thumbnail">
 				</td>
-				<td>{{item.category.name}}</td>
-				<td>{{item.available?'Có':'Không'}}</td>
 				<td>
 					<div>
 						<button ng-click="edit(item)" class="btn btn-warning btn-sm me-3">Edit</button>
@@ -49,4 +45,5 @@
 			</tr>
 		</tbody>
 	</table>
+	
 </div>
