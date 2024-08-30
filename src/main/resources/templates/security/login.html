@@ -31,12 +31,12 @@
 					  <div class="card-body">
 						<form th:action="@{/security/login}" method="post">
 						  <div class="form">
-							<input style="height: 50px;" type="text" class="form-control" name="username" placeholder="Tên đăng nhập của bạn*" required />
+							<input style="height: 50px;" type="text" class="form-control" name="username" placeholder="Tên đăng nhập của bạn" required />
 						  </div>
 						  <div class="form">
 		
 							<div class="password-input">
-							  <input style="height: 50px;" type="password" class="form-control" name="password" placeholder="Mật khẩu*" required />
+							  <input style="height: 50px;" type="password" class="form-control" name="password" placeholder="Mật khẩu trên 6 kí tự" required />
 							</div>
 						  </div>
 						  <div class="form ms-4">
@@ -44,7 +44,6 @@
 							<label for="remember" name="remember-me" class="form-label">Ghi nhớ tài khoản?</label>
 						  </div>
 						  <div class="form">
-							<i class="pull-left text-danger" th:text="${message}"></i><br>
 							<button type="submit" class="btn mt-3">Đăng nhập</button>
 						  </div>
 						  <a class="forgot-password ms-3" th:href="@{/security/forgot-password/form}">Quên mật khẩu?</a>

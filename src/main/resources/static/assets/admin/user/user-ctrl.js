@@ -62,6 +62,7 @@ app.controller("user-ctrl", function($scope, $http){
 		$http.put(`/rest/Accounts/${item.username}`, item).then(resp => {
 			var index = $scope.items.findIndex(p => p.username == item.username);
 			$scope.items[index] = item;
+			$scope.reset();
 			alert("Cập nhật tài khoản thành công");
 		}).catch(error => {
 			alert("Lỗi cập nhật tài khoản");

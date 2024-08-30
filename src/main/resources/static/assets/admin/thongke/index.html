@@ -4,19 +4,19 @@
             <div class="text-center col-3">
                 <div class="card px-5 py-4">
                     <h5>Hôm nay</h5>
-                    <span class="text-danger">{{reportDate | number : 0}} vnđ</span>
+                    <span class="text-danger">{{reportDate.toLocaleString('vi-VN')}} VNĐ</span>
                 </div>
             </div>
             <div class="text-center col-3">
                 <div class="card px-5 py-4">
                     <h5>Năm {{year}}</h5>
-                    <span class="text-danger">{{reportYear | number : 0}} vnđ</span>
+                    <span class="text-danger">{{reportYear.toLocaleString('vi-VN')}} VNĐ</span>
                 </div>
             </div>
             <div class="text-center col-3">
                 <div class="card px-5 py-4">
                     <h5>Tháng {{month}}</h5>
-                    <span class="text-danger">{{reportMonth | number : 0}} vnđ</span>
+                    <span class="text-danger">{{reportMonth.toLocaleString('vi-VN')}} VNĐ</span>
                 </div>
             </div>
             <div class="text-center col-3">
@@ -92,8 +92,8 @@
                         <td>
                             <img ng-src="{{'/assets/images/' + item[2]}}" width="50" class="img-thumbnail">
                         </td>
-                        <td class="mt-1 text-center">{{item[4]}}</td>
-                        <td class="mt-1 text-center">{{item[3] | date : 'dd-MM-yyyy'}}</td>
+                        <td class="mt-1 text-center">{{item[4].toLocaleString('vi-VN')}} VNĐ</td>
+                        <td class="mt-1 text-center">{{item[3] | date : 'dd-MM-yyyy'}} </td>
                         <td class="mt-1 text-center">{{item[5]}}</td>
                        </tr>
                     </tbody>

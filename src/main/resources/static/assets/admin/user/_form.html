@@ -11,21 +11,21 @@
 				<div class="row">
 					<div class=" col-sm-6">
 						<div class="mb-2">Tên tài khoản</div>
-						<input ng-model="form.username" placeholder="Tên tài khoản?" class="form-control">
+						<input ng-model="form.username" required  placeholder="Tên tài khoản?" class="form-control">
 					</div>
 					<div class=" col-sm-6">
 						<div class="mb-2">Mật khẩu</div>
-						<input type="text" ng-model="form.password" placeholder="Mật khẩu?" class="form-control">
+						<input type="text" ng-model="form.password" minlength="6" required placeholder="Mật khẩu?" class="form-control">
 					</div>
 				</div>
 				<div class="row mt-3">
 					<div class=" col-sm-6">
 						<div class="mb-2">Họ và tên</div>
-						<input ng-model="form.fullname" placeholder="Họ và tên?" class="form-control">
+						<input ng-model="form.fullname"required placeholder="Họ và tên?" class="form-control">
 					</div>
 					<div class=" col-sm-6">
 						<div class="mb-2">Email</div>
-						<input ng-model="form.email" placeholder="Email?" class="form-control">
+						<input ng-model="form.email"required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email?" class="form-control">
 					</div>
 				</div>
 				<div class="row mt-3">

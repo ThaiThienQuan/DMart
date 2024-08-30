@@ -5302,9 +5302,7 @@ tr:first-child {
 /**------------------------------------------------------------------
  * Reset End Here
  */
-#rtsHeader {
-	position: relative;
-}
+
 
 .header-topbar {
 	background: var(--theme-color);

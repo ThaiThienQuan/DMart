@@ -1,5 +1,6 @@
 <div class="panel panel-default" ng-if="items">
 	<nav aria-label="Standard pagination example" class="d-flex justify-content-end me-3 mb-3 mt-3">
+		
 		<ul class="pagination">
 			<li class="page-item">
 				<a style="cursor: pointer;" class="page-link" ng-click="pager.prev()" aria-label="Previous">
@@ -9,7 +10,7 @@
 				<li class="page-item"><a style="cursor: pointer;" class="page-link" ng-click="pager.first()" >First</a></li>
 				<li class="page-item"><a style="cursor: pointer;" class="page-link" >{{pager.page + 1}}</a></li>
 				<li class="page-item"><a style="cursor: pointer;" class="page-link" ng-click="pager.last()">Last</a></li>
-				<li class="page-item">
+			<li class="page-item">
 				<a style="cursor: pointer;" class="page-link" ng-click="pager.next()" aria-label="Next">
 					<span aria-hidden="true">»</span>
 				</a>
@@ -33,7 +34,7 @@
 			<tr ng-repeat="item in pager.items" class="align-middle">
 				<td>{{item.id}}</td>
 				<td>{{item.name}}</td>
-				<td>{{item.price | number : 0}} vnđ</td>
+				<td>{{item.price.toLocaleString('vi-VN')}} VNĐ</td>
 				<td>{{item.createDate | date : 'dd-MM-yyyy'}}</td>
 				<td>
 					<img ng-src="{{'/assets/images/' + item.image}}" width="50" class="img-thumbnail">

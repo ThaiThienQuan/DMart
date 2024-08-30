@@ -1,29 +1,35 @@
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-	th:replace="~{/layout/index :: dynamic(~{::main})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
 <head>
-<meta charset="utf-8">
-<title>Insert title here</title>
-<style>
-	.invalid{font-size:14px} 
-</style>
+	<meta charset="utf-8">
+	<title>Insert title here</title>
+	<style>
+		.invalid {
+			font-size: 14px
+		}
+
+		.Toastify {
+			z-index: 9999;
+		}
+	</style>
 </head>
+
 <body>
 	<main>
 		<div class="page-path">
 			<div class="container">
-			  <div class="breadcrumbs-inner">
-				<h1 class="path-title">Đăng ký</h1>
-				<ul>
-				  <li>
-					<a class="home-page-link" href="">Trang chủ <i class="fal fa-angle-right"></i></a>
-				  </li>
-				  <li>
-					<a class="current-page" href="#">Đăng ký</a>
-				  </li>
-				</ul>
-			  </div>
+				<div class="breadcrumbs-inner">
+					<h1 class="path-title">Đăng ký</h1>
+					<ul>
+						<li>
+							<a class="home-page-link" href="">Trang chủ <i class="fal fa-angle-right"></i></a>
+						</li>
+						<li>
+							<a class="current-page" href="#">Đăng ký</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<div class="login-area">
@@ -36,24 +42,31 @@
 							</div>
 							<div class="card col-md-8 m-auto">
 								<div class="card-body">
-									<form id="myForm" th:object="${Account}" method="post" action="/security/signup/form" >
+									<form id="myForm" th:object="${Account}" method="post"
+										action="/security/signup/form">
 										<div class="form">
-											<input style="height: 50px;" th:field="*{username}" class="form-control" id="tnd_username" placeholder="Tên Tài Khoản" required/>
+											<input style="height: 50px;" th:field="*{username}" class="form-control"
+												id="tnd_username" placeholder="Tên Tài Khoản" required />
 										</div>
 										<div class="form">
-											<input style="height: 50px;" type="email" th:field="*{email}" class="form-control" id="tnd_email" placeholder="Email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
+											<input style="height: 50px;" type="email" th:field="*{email}"
+												class="form-control" id="tnd_email" placeholder="Email"
+												pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
 										</div>
 										<div class="form">
-											<input style="height: 50px;" th:field="*{fullname}" class="form-control" id="tnd_fullname" placeholder="Tên đầy đủ" required/>
+											<input style="height: 50px;" th:field="*{fullname}" class="form-control"
+												id="tnd_fullname" placeholder="Tên đầy đủ" required />
 										</div>
 										<div class="form">
 											<div class="password-input">
-												<input type="password" minlength="6" style="height: 50px;" th:field="*{password}" class="form-control" id="tnd_password" placeholder="Mật khẩu" required/>
+												<input type="password" minlength="6" style="height: 50px;"
+													th:field="*{password}" class="form-control" id="tnd_password"
+													placeholder="Mật khẩu" required />
 											</div>
 										</div>
 										<div class="form">
 											<button id="submitButton" onclick="hienthi2()" class="btn">Đăng ký</button>
-											<button class="btn ml-3 " onclick="hienthi1()" formaction="/security/signup/form">Xóa hết</button>
+											<button class="btn ml-3 " id="clearButton">Xóa hết</button>
 											<a href="/product/list" class="btn ml-3 pt-3">Trang chủ</a>
 										</div>
 									</form>
@@ -63,17 +76,97 @@
 					</div>
 				</div>
 			</div>
-		</div>		
-		  <script>
-			function hienthi1() {
-				alert("Xóa hết thành công !!");
-			}
-			function hienthi2() {
-				alert("đăng ký  thành công !!");
-			}
+		</div>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const myForm = document.getElementById("myForm");
+				const submitButton = document.getElementById("submitButton");
+				const clearButton = document.getElementById("clearButton");
+
+				submitButton.addEventListener("click", function (event) {
+					event.preventDefault();
+
+					if (validateForm()) {
+						checkDuplicate();
+					}
+				});
+
+				clearButton.addEventListener("click", function (event) {
+					event.preventDefault();
+					clearForm();
+				});
+
+				function validateForm() {
+					const username = document.getElementById("tnd_username").value.trim();
+					const email = document.getElementById("tnd_email").value.trim();
+					const fullname = document.getElementById("tnd_fullname").value.trim();
+					const password = document.getElementById("tnd_password").value;
+
+					if (username === '' || email === '' || fullname === '' || password === '') {
+						showToast("Vui lòng điền đầy đủ thông tin.", "error");
+						return false;
+					}
+
+					const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+					if (!emailRegex.test(email)) {
+						showToast("Email không hợp lệ.", "error");
+						return false;
+					}
+
+					if (username.length < 6 || password.length < 6) {
+						showToast("Tên tài khoản và mật khẩu phải có ít nhất 6 ký tự.", "error");
+						return false;
+					}
+					alert("Tạo tài khoản thành công");
+					return true;
+				}
+
+				function checkDuplicate() {
+					const username = document.getElementById("tnd_username").value.trim();
+					const email = document.getElementById("tnd_email").value.trim();
+
+					fetch(`/rest/Accounts?username=${username}&email=${email}`)
+						.then(response => response.json())
+						.then(data => {
+							if (data.usernameExists) {
+								showToast("Tên tài khoản đã tồn tại.", "error");
+							} else if (data.emailExists) {
+								showToast("Email đã được sử dụng.", "error");
+							} else {
+								myForm.submit();
+							}
+						})
+						.catch(error => {
+							showToast("Có lỗi xảy ra khi kiểm tra.", "error");
+							console.error('Error:', error);
+						});
+				}
+
+				function clearForm() {
+					document.getElementById("tnd_username").value = "";
+					document.getElementById("tnd_email").value = "";
+					document.getElementById("tnd_fullname").value = "";
+					document.getElementById("tnd_password").value = "";
+
+					showToast("Xóa hết thành công!", "success");
+				}
+
+				function showToast(message, type) {
+					Toastify({
+						text: message,
+						duration: 3000,
+						newWindow: true,
+						close: true,
+						gravity: "top",
+						position: "center",
+						backgroundColor: type === "success" ? "green" : "red"
+					}).showToast();
+				}
+
+			});
+
 		</script>
 	</main>
 </body>
 
 </html>
-	

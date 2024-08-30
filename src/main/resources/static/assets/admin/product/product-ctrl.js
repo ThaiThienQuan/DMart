@@ -1,15 +1,15 @@
-app.controller("product-ctrl", function($scope, $http){
+app.controller("product-ctrl", function($scope, $http) {
 	$scope.items = [];
 	$scope.cates = [];
 	$scope.form = {};
-	
+
 	$scope.form = {
 		createDate: new Date(),
-		image:'cloud-upload.jpg',
+		image: 'cloud-upload.jpg',
 		available: true,
 	};
-	
-	$scope.initialize = function(){
+
+	$scope.initialize = function() {
 		// load product
 		$http.get("/rest/products").then(resp => {
 			$scope.items = resp.data;
@@ -24,19 +24,19 @@ app.controller("product-ctrl", function($scope, $http){
 	}
 
 	$scope.initialize();
-	
-	$scope.reset = function(){
+
+	$scope.reset = function() {
 		$scope.form = {
 			createDate: new Date(),
-			image:'cloud-upload.jpg',
+			image: 'cloud-upload.jpg',
 			available: true,
 		};
 	}
-	$scope.edit = function(item){
+	$scope.edit = function(item) {
 		$scope.form = angular.copy(item);
 		$("#home-tab").tab('show')
 	}
-	$scope.create = function(){
+	$scope.create = function() {
 		var item = angular.copy($scope.form);
 		var item = angular.copy($scope.form);
 		// Sử dụng AngularJS để truy cập phần tử input file có id là "image"
@@ -48,17 +48,17 @@ app.controller("product-ctrl", function($scope, $http){
 		// Lấy tên file từ đường dẫn
 		var fileNameOnly = fileName.split('\\').pop();
 		item.image = fileNameOnly;
-		$http.post('/rest/products',item).then(resp => {
-			resp.data.createDate = new Date(resp.data.createDate)
+		$http.post('/rest/products', item).then(resp => {
+			resp.data.createDate = new Date(resp.data.createDate);
 			$scope.items.push(resp.data);
-			$scope.reset();
+			$scope.reset();	
 			alert("Thêm mới sản phẩm thành công");
 		}).catch(error => {
 			alert("Lỗi thêm mới sản phẩm");
 			console.log("Error", error);
 		});
 	}
-	$scope.update = function(){
+	$scope.update = function() {
 		var item = angular.copy($scope.form);
 		// Sử dụng AngularJS để truy cập phần tử input file có id là "image"
 		var imageInputElement = angular.element(document.getElementById('image'));
@@ -73,13 +73,14 @@ app.controller("product-ctrl", function($scope, $http){
 		$http.put(`/rest/products/${item.id}`, item).then(resp => {
 			var index = $scope.items.findIndex(p => p.id == item.id);
 			$scope.items[index] = item;
+			$scope.reset();
 			alert("Cập nhật sản phẩm thành công");
 		}).catch(error => {
 			alert("Lỗi cập nhật sản phẩm");
 			console.log("Error", error);
 		});
 	}
-	$scope.delete = function(item){
+	$scope.delete = function(item) {
 		$http.delete(`/rest/products/${item.id}`).then(resp => {
 			var index = $scope.items.findIndex(p => p.id == item.id);
 			$scope.items.splice(index, 1);
@@ -90,13 +91,13 @@ app.controller("product-ctrl", function($scope, $http){
 			console.log("Error", error);
 		});
 	}
-	
-	$scope.imageChanged = function(files){
+
+	$scope.imageChanged = function(files) {
 		var data = new FormData();
 		data.append('file', files[0]);
-		$http.post('/rest/upload/images', data,{
+		$http.post('/rest/upload/images', data, {
 			transformRequest: angular.identity,
-			headers:{'Content-Type':undefined}
+			headers: { 'Content-Type': undefined }
 		}).then(resp => {
 			$scope.form.image = resp.data.name;
 		}).catch(error => {
@@ -104,35 +105,35 @@ app.controller("product-ctrl", function($scope, $http){
 			console.log("Error", error);
 		})
 	}
-	
+
 	$scope.pager = {
 		page: 0,
 		size: 8,
-		get items(){
+		get items() {
 			var start = this.page * this.size;
 			return $scope.items.slice(start, start + this.size);
 		},
-		get count(){
+		get count() {
 			return Math.ceil(1.0 * $scope.items.length / this.size);
 		},
-		first(){
+		first() {
 			this.page = 0;
 		},
-		prev(){
+		prev() {
 			this.page--;
-			if(this.page < 0){
+			if (this.page < 0) {
 				this.last();
 			}
 		},
-		next(){
+		next() {
 			this.page++;
-			if(this.page >= this.count){
+			if (this.page >= this.count) {
 				this.first();
 			}
 		},
-		last(){
+		last() {
 			this.page = this.count - 1;
 		}
 	}
-	
+
 });

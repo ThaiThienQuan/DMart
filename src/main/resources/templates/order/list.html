@@ -44,7 +44,7 @@
 							<tbody>
 								<tr class="text-center" th:each="order, state:${orders}">
 									<td>[[${order.id}]]</td>
-									<td>{{order.createDate | date : 'dd-MM-yyyy'}}</td>
+									<td>[[${#dates.format(order.createDate, 'dd/MM/yyyy')}]]	</td>
 									<td>[[${order.address}]]</td>
 									<td>
 										<a th:href="@{|/order/detail/${order.id}|}" class="btn btn-default">

@@ -44,7 +44,7 @@
 											<h4 class="product-title">{{item.name}}</h4>
 										</div>
 									</td>
-									<td><span class="product-price mt-4">{{item.price | number : 0}} vnđ</span></td>
+									<td><span class="product-price mt-4">{{item.price.toLocaleString('vi-VN') }} VNĐ</span></td>
 									<td>
 										<div class="cart-edit">
 											<div class="quantity-edit mt-3">
@@ -63,7 +63,7 @@
 					</div>
 					<div class="col-4 text-center">
 						<div>
-							<p>Tổng tiền: <span id="amount">{{cart.amount | number : 0}} vnđ</span></p>
+							<p>Tổng tiền: <span id="amount">{{cart.amount.toLocaleString('vi-VN')}} VNĐ</span></p>
 							<p>Số lượng: <span>{{cart.count}}</span> sản phẩm</p>
 						</div>
 						<div class="mt-3">

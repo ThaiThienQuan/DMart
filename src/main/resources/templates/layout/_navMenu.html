@@ -49,7 +49,6 @@
 						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
 						  <th:block th:if="${#request.remoteUser}">
 							  <li><a class="dropdown-item" href="#">Tài khoản: [[${#request.remoteUser}]]</a></li>
-							  <li><a class="dropdown-item" th:href="@{/capnhatuser}">Cập nhật user</a></li>
 							  <li><a class="dropdown-item" th:href="@{/security/logoff}"> Đăng xuất</a></li>
 						  </th:block>
 						  <th:block th:unless="${#request.remoteUser}">

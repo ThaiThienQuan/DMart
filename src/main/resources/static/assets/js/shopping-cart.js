@@ -158,7 +158,114 @@ app.controller("shopping-cart-ctrl",function($scope, $http, $compile){
 		}
 	   });
    }
-
+   $scope.findby10 = function() {
+		$.ajax({ 
+		url: '/product/list/10',
+		method: 'GET',
+		success: function (response) {
+		   //Cập nhật lại nội dung của trang web
+		   $("#customers").fadeOut(400, function() {
+			   var table = $(response).find("#customers").html();
+			   $("#customers").html(table).fadeToggle();
+			   var compiledHtml = $compile($("#customers"))($scope);
+		   });
+						   
+		},
+		error: function (xhr, status, error) {
+		  console.log("Error: " + error);
+		}
+	   });
+   }
+   $scope.findby1015 = function() {
+		$.ajax({ 
+		url: '/product/list/1015',
+		method: 'GET',
+		success: function (response) {
+		   //Cập nhật lại nội dung của trang web
+		   $("#customers").fadeOut(400, function() {
+			   var table = $(response).find("#customers").html();
+			   $("#customers").html(table).fadeToggle();
+			   var compiledHtml = $compile($("#customers"))($scope);
+		   });
+						   
+		},
+		error: function (xhr, status, error) {
+		  console.log("Error: " + error);
+		}
+	   });
+   }
+   $scope.findby1520 = function() {
+		$.ajax({ 
+		url: '/product/list/1520',
+		method: 'GET',
+		success: function (response) {
+		   //Cập nhật lại nội dung của trang web
+		   $("#customers").fadeOut(400, function() {
+			   var table = $(response).find("#customers").html();
+			   $("#customers").html(table).fadeToggle();
+			   var compiledHtml = $compile($("#customers"))($scope);
+		   });
+						   
+		},
+		error: function (xhr, status, error) {
+		  console.log("Error: " + error);
+		}
+	   });
+   }
+   $scope.findby2025 = function() {
+		$.ajax({ 
+		url: '/product/list/2025',
+		method: 'GET',
+		success: function (response) {
+		   //Cập nhật lại nội dung của trang web
+		   $("#customers").fadeOut(400, function() {
+			   var table = $(response).find("#customers").html();
+			   $("#customers").html(table).fadeToggle();
+			   var compiledHtml = $compile($("#customers"))($scope);
+		   });
+						   
+		},
+		error: function (xhr, status, error) {
+		  console.log("Error: " + error);
+		}
+	   });
+   }
+   $scope.findby2530 = function() {
+		$.ajax({ 
+		url: '/product/list/2530',
+		method: 'GET',
+		success: function (response) {
+		   //Cập nhật lại nội dung của trang web
+		   $("#customers").fadeOut(400, function() {
+			   var table = $(response).find("#customers").html();
+			   $("#customers").html(table).fadeToggle();
+			   var compiledHtml = $compile($("#customers"))($scope);
+		   });
+						   
+		},
+		error: function (xhr, status, error) {
+		  console.log("Error: " + error);
+		}
+	   });
+   }
+$scope.findby30 = function() {
+		$.ajax({ 
+		url: '/product/list/30',
+		method: 'GET',
+		success: function (response) {
+		   //Cập nhật lại nội dung của trang web
+		   $("#customers").fadeOut(400, function() {
+			   var table = $(response).find("#customers").html();
+			   $("#customers").html(table).fadeToggle();
+			   var compiledHtml = $compile($("#customers"))($scope);
+		   });
+						   
+		},
+		error: function (xhr, status, error) {
+		  console.log("Error: " + error);
+		}
+	   });
+   }
    $scope.searchTerm = '';
    $scope.handleKeyPress = function(event) {
 	// 13 là mã phím cho phím "Enter"
