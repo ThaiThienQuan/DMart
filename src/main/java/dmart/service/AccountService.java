@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import dmart.entity.Account;
-import dmart.entity.Product;
 
 public interface AccountService {
 

@@ -113,8 +113,8 @@
 						return false;
 					}
 
-					if (username.length < 6 || password.length < 6) {
-						showToast("Tên tài khoản và mật khẩu phải có ít nhất 6 ký tự.", "error");
+					if ( password.length < 6) {
+						showToast("Mật khẩu phải có ít nhất 6 ký tự.", "error");
 						return false;
 					}
 					alert("Tạo tài khoản thành công");

@@ -18,6 +18,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
 	@Query("SELECT o from Product o where o.available = 'true'")
 	List<Product> findAllByAvailable();
 	List<Product>findByPriceBetween(int minPrice, int maxPrice);
+	/*List<Product>findByPriceBetween(int minPrice, int maxPrice);*/
 	@Query("SELECT o from Product o where o.price <= 10000000")
 	List<Product> findBy10();
 	@Query("SELECT o from Product o where o.price BETWEEN 10000000 AND 15000000")

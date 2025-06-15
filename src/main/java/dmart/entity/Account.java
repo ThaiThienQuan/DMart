@@ -9,10 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-
-import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,12 +18,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @SuppressWarnings("serial")
 @Data
+@Getter
+@Setter
 @Entity
 @Table(name = "Accounts")
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Account implements Serializable {
 	@Id
 	String username;
@@ -42,5 +41,6 @@ public class Account implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	List<Authority> authorities;
-
+	
+	
 }
